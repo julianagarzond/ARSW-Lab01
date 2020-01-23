@@ -1,5 +1,7 @@
 package edu.eci.arsw.math;
 
+import java.util.ArrayList;
+
 ///  <summary>
 ///  An implementation of the Bailey-Borwein-Plouffe formula for calculating hexadecimal
 ///  digits of pi.
@@ -46,6 +48,42 @@ public class PiDigits {
 
         return digits;
     }
+
+    public static byte[] getDigits(int start, int count, int N) {
+        ArrayList<PiThread> piThreads = new ArrayList<>();
+        ArrayList<Thread> threads = new ArrayList<>();
+        int delta = (int) (count - start) / N;
+        for (int i = 0; i < N; i++) {
+
+            PiThread piThread;
+            Thread thread;
+            if (i != N - 1) {
+                piThread = new PiThread(start + (i * delta), start + (i * delta) + delta);
+                thread = new Thread(piThread);
+            } else {
+                piThread = new PiThread(start + (i * delta), count);
+                thread = new Thread(piThread);
+            }
+
+            piThreads.add(piThread);
+            threads.add(thread);
+
+            for(Thread th : threads){
+                th.run();
+                try {
+                    th.join();
+                } catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+
+            }
+        }
+    return null;
+    }
+
+
+
+
 
     /// <summary>
     /// Returns the sum of 16^(n - k)/(8 * k + m) from 0 to k.
