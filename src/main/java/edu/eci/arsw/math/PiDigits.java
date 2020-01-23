@@ -52,6 +52,7 @@ public class PiDigits {
     public static byte[] getDigits(int start, int count, int N) {
         ArrayList<PiThread> piThreads = new ArrayList<>();
         ArrayList<Thread> threads = new ArrayList<>();
+        byte [] answer = new byte[0];
         int delta = (int) (count - start) / N;
         for (int i = 0; i < N; i++) {
 
@@ -64,21 +65,34 @@ public class PiDigits {
                 piThread = new PiThread(start + (i * delta), count);
                 thread = new Thread(piThread);
             }
-
+            piThread.run();
             piThreads.add(piThread);
             threads.add(thread);
+        }
 
-            for(Thread th : threads){
-                th.run();
-                try {
-                    th.join();
-                } catch (InterruptedException e){
-                    e.printStackTrace();
-                }
-
+        for(Thread th : threads){
+            try {
+                th.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
-    return null;
+
+        for(PiThread th : piThreads){
+            answer = joinArray(answer,th.getAnswer());
+        }
+        return answer;
+    }
+
+    private static byte[] joinArray(byte[] first, byte[] second){
+        byte[] answer = new byte[first.length + second.length];
+
+        for (int i = 0; i < answer.length; ++i)
+        {
+            answer[i] = i < first.length ? first[i] : second[i - first.length];
+        }
+
+        return answer;
     }
 
 

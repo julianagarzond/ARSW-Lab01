@@ -49,4 +49,13 @@ public class PiCalcTest {
         }
     }
 
+    @Test
+    public void deberiaRetornarRespuesta1() throws InterruptedException{
+        String s1 = new String(Main.bytesToHex(PiDigits.getDigits(1,20000)));
+        byte[] s2 = (PiDigits.getDigits(1,20000,1));
+        System.out.println(s1);
+        System.out.println(s2);
+
+    }
+
 }

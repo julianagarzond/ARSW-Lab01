@@ -14,10 +14,10 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String a[]) {
-        System.out.println(bytesToHex(PiDigits.getDigits(0, 10)));
+        //System.out.println(bytesToHex(PiDigits.getDigits(0, 10)));
         //System.out.println(bytesToHex(PiDigits.getDigits(1, 100)));
         //System.out.println(bytesToHex(PiDigits.getDigits(1, 1000000)));
-        System.out.println(bytesToHex(PiDigits.getDigits(1, 1000000, 3)));
+        //System.out.println(bytesToHex(PiDigits.getDigits(1, 1000000, 1)));
 
     }
 
