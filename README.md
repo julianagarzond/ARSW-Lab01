@@ -1,4 +1,8 @@
 # ARSW-Lab01
+### Juliana Garzon Duque
+### Juan David Navarro
+### Eduardo Ocampo Arellano
+### Sarah Vieda Castro
 ## Parte I - Introducción de Threads en JAVA
 
 1. ¿Cual es la diferencia entre start() y run()?
