@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+
 public class MainCanodromo {
 
     private static Galgo[] galgos;
@@ -14,6 +15,7 @@ public class MainCanodromo {
     private static RegistroLlegada reg = new RegistroLlegada();
 
     public static void main(String[] args) {
+        //synchronized()
         can = new Canodromo(17, 100);
         galgos = new Galgo[can.getNumCarriles()];
         can.setVisible(true);
@@ -36,7 +38,13 @@ public class MainCanodromo {
                                     galgos[i] = new Galgo(can.getCarril(i), "" + i, reg);
                                     //inicia los hilos
                                     galgos[i].start();
-
+                                }
+                                for (Galgo gl: galgos){
+                                    try {
+                                        gl.join();
+                                    } catch (InterruptedException ex) {
+                                        ex.printStackTrace();
+                                    }
                                 }
                                
 				can.winnerDialog(reg.getGanador(),reg.getUltimaPosicionAlcanzada() - 1); 
