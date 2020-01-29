@@ -58,18 +58,41 @@ public class MainCanodromo {
 
         can.setStopAction(
                 new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        System.out.println("Carrera pausada!");
-                    }
-                }
+
+                              @Override
+                              public void actionPerformed(final ActionEvent e) {
+                                  ((JButton) e.getSource()).setEnabled(false);
+                                  new Thread() {
+                                      public void run() {
+                                          for (Galgo g:galgos) {
+                                              g.changeState();
+                                          }
+                                          System.out.println("Carrera parada!");
+                                      }
+                                  }.start();
+
+                              }
+                          }
         );
 
         can.setContinueAction(
                 new ActionListener() {
+
                     @Override
-                    public void actionPerformed(ActionEvent e) {
-                        System.out.println("Carrera reanudada!");
+                    public void actionPerformed(final ActionEvent e) {
+                        ((JButton) e.getSource()).setEnabled(false);
+                        new Thread() {
+                            public void run() {
+                                galgos[0].restart();
+                                for (Galgo g:galgos) {
+                                    g.changeState();
+                                    g.restart();
+                                }
+                                System.out.println("Carrera reanudada!");
+                            }
+                        }.start();
+
+
                     }
                 }
         );
