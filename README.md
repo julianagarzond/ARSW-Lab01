@@ -29,6 +29,9 @@ Es mucho más efectivo que utilizar la misma cantidad de hilos y de procesadores
 
 ## De acuerdo a la situación descrita anteriormente, ¿se aplicaría mejor la ley de Amdahls? 
 
+De acuerdo a esta ley, el programa será menos eficiente si se agregan mas CPUs por lo que si tenemos 500 CPUs y cada una de estas para un hilo no se estaría usando la máxima capacidad del procesador. 
+
+La solución mas adecuada seria que al tener c hilos y ls distribuimos sobre 500 CPUs entonces se le estarían dando un mejor uso al tener que manejar esos hilos, por esta razón aplicariamos de una forma más adecuada la ley de Amdahls.
 
 
 
