@@ -18,3 +18,18 @@ Pruebas utilizando 200 threads
 
 Pruebas utilizando 500 threads
 ![C](https://user-images.githubusercontent.com/53972469/73075099-2aef7800-3e89-11ea-8ca0-8c74052ca57a.png)
+
+## ¿Por qué no se logra el mejor rendimiento con los 500 hilos? ¿Cómo se compara este rendimiento cuando se usan 200?
+
+Realizando un análisis de los resultados anteriores, podemos observar que utilizar 200 hilos es mucho más eficiente que usar 500 hilos, esto se debe a que se debe guardar el estado de cada uno de los hilos y luego restaurar su valor al momento de ejecutar. 
+
+## ¿Cómo se comporta usando tantos hilos como el doble de procesadores?
+
+Es mucho más efectivo que utilizar la misma cantidad de hilos y de procesadores ya que se realiza un uso mas óptimo de los procesadores debido a que cada uno se hace cargo de algo de más que no le provoca una carga.
+
+## De acuerdo a la situación descrita anteriormente, ¿se aplicaría mejor la ley de Amdahls? 
+
+
+
+
+
