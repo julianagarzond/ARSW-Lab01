@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-
 public class MainCanodromo {
 
     private static Galgo[] galgos;
@@ -26,7 +25,7 @@ public class MainCanodromo {
 
                     @Override
                     public void actionPerformed(final ActionEvent e) {
-						//como acción, se crea un nuevo hilo que cree los hilos
+                        //como acción, se crea un nuevo hilo que cree los hilos
                         //'galgos', los pone a correr, y luego muestra los resultados.
                         //La acción del botón se realiza en un hilo aparte para evitar
                         //bloquear la interfaz gráfica.
@@ -39,15 +38,15 @@ public class MainCanodromo {
                                     //inicia los hilos
                                     galgos[i].start();
                                 }
-                                for (Galgo gl: galgos){
+                                for (Galgo gl : galgos) {
                                     try {
                                         gl.join();
                                     } catch (InterruptedException ex) {
                                         ex.printStackTrace();
                                     }
                                 }
-                               
-				can.winnerDialog(reg.getGanador(),reg.getUltimaPosicionAlcanzada() - 1); 
+
+                                can.winnerDialog(reg.getGanador(), reg.getUltimaPosicionAlcanzada() - 1);
                                 System.out.println("El ganador fue:" + reg.getGanador());
                             }
                         }.start();
@@ -59,20 +58,20 @@ public class MainCanodromo {
         can.setStopAction(
                 new ActionListener() {
 
-                              @Override
-                              public void actionPerformed(final ActionEvent e) {
-                                  ((JButton) e.getSource()).setEnabled(false);
-                                  new Thread() {
-                                      public void run() {
-                                          for (Galgo g:galgos) {
-                                              g.changeState();
-                                          }
-                                          System.out.println("Carrera parada!");
-                                      }
-                                  }.start();
+                    @Override
+                    public void actionPerformed(final ActionEvent e) {
+                        ((JButton) e.getSource()).setEnabled(false);
+                        new Thread() {
+                            public void run() {
+                                for (Galgo g : galgos) {
+                                    g.changeState();
+                                }
+                                System.out.println("Carrera parada!");
+                            }
+                        }.start();
 
-                              }
-                          }
+                    }
+                }
         );
 
         can.setContinueAction(
@@ -84,14 +83,13 @@ public class MainCanodromo {
                         new Thread() {
                             public void run() {
                                 galgos[0].restart();
-                                for (Galgo g:galgos) {
+                                for (Galgo g : galgos) {
                                     g.changeState();
                                     g.restart();
                                 }
                                 System.out.println("Carrera reanudada!");
                             }
                         }.start();
-
 
                     }
                 }
