@@ -34,5 +34,7 @@ De acuerdo a esta ley, el programa será menos eficiente si se agregan mas CPUs 
 La solución mas adecuada seria que al tener c hilos y ls distribuimos sobre 500 CPUs entonces se le estarían dando un mejor uso al tener que manejar esos hilos, por esta razón aplicariamos de una forma más adecuada la ley de Amdahls.
 
 
-
+![1h](https://user-images.githubusercontent.com/44879884/73420779-b20d7780-42f1-11ea-99f9-f1a0eba4344e.png)
+![2h](https://user-images.githubusercontent.com/44879884/73420833-df5a2580-42f1-11ea-9986-515fe847e10e.png)
+![3h](https://user-images.githubusercontent.com/44879884/73420837-e2edac80-42f1-11ea-8540-9a83e0b1ba10.png)
 
